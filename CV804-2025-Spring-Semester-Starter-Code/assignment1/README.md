@@ -1,7 +1,7 @@
 # Height Map Rendering
 
 <div align="center">
-  <img src="./assets/teaser_raza.gif" alt="Height Map Rendering" title="Height Map Rendering Teaser" />
+  <img src="./assets/teaser_raza2.gif" alt="Height Map Rendering" title="Height Map Rendering Teaser" />
 </div>
 
 ## Overview
