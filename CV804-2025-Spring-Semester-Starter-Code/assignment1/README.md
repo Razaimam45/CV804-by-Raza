@@ -52,12 +52,11 @@ conda activate height_map_rendering
 To start the project, run the following command:
 
 ```bash
-python main.py --height_map_path 'assets\depth_data\OhioPyle-256.jpg' \
-               --window_width 800 \
+python main.py --window_width 800 \
                --window_height 600
 ```
 
-This command initializes the renderer with the height map located at `assets\depth_data\OhioPyle-256.jpg` and creates a window of size 800x600 pixels.
+This command creates a window of size 800x600 pixels and initializes the renderer which then ipnuts the user to interactively select the height map image.
 
 ---
 
