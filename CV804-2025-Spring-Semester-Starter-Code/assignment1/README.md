@@ -79,10 +79,12 @@ The following key components form the backbone of the project:
   - Move: Drag with the middle mouse button.
   - Scale: Scroll up/down.
 - **Keyboard Shortcuts**:
-  - `1`: Render as points.
-  - `2`: Render as wireframe.
-  - `3`: Render as solid triangles.
-
+  - `W`: Render as points.
+  - `W`: Render as wireframe.
+  - `W`: Render as solid triangles.
+- **Height Control and Deformations**:
+  - `Up` Key: Increase Height.
+  - `Down` Key: Decrease Height.
 ---
 
 ## Free Tips for Exploration
