@@ -1,103 +1,160 @@
-# Assignment #4
+# Ray Tracer - Assignment Solution
+
 ## Introduction
-In this assignment, you will be building a ray tracer. Your ray tracer will be able to handle opaque surfaces with lighting and shadows. Provided for you will be starter code that will load scene data from a file.
+In this assignment, I implemented a ray tracing renderer that handles opaque surfaces with lighting and shadows using GLSL shaders. The goal was to build a ray tracer that could generate rays, compute intersections, and apply Phong illumination along with shadowing. The final solution is a fully functional ray tracing system that renders scenes with spheres and triangles, applying appropriate lighting and shading effects.
 
-For this assignment, you will implement a ray tracing renderer using GLSL shaders. This involves writing shader code to handle ray generation, intersections, lighting, and shadow computations. The starter code simplifies much of the setup, allowing you to focus on the core ray tracing logic.
+## Results - Without Additional Credit Features
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./outputs/test_single_sphere.png" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-20%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./outputs/test_double_sphere.png" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./outputs/spheres.png" "width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./outputs/test_triangle.png" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./outputs/test_sphere_and_triangle.png" Scene" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    </div>
+</div>
 
-After completing this assignment, you should have a solid understanding of:
-- How to generate rays in a shader and use uniform variables for camera properties.
-- How to implement Phong Illumination in GLSL.
-- How to implement geometric operators, e.g. calculating intersections, reflections, barycentric coordinates etc.
-- How to use shadow rays to simulate shadowing.
+## Results - With Additional Credit Features (Zoom-In for better details):
+- Recursive Reflection
+- Anti-Aliasing
+- Soft Shadows
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./outputs_extra_creds/test_single_sphere.png" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-20%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./outputs_extra_creds/test_double_sphere.png" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./outputs_extra_creds/spheres.png" "width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./outputs_extra_creds/test_triangle.png" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./outputs_extra_creds/test_sphere_and_triangle.png" Scene" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    </div>
+</div>
 
-Similar to the previous assignment, this homework is pretty challenging (and fun!). Therefore, we advise to start early and seek for helps from TAs if you have any issue. **DO NOT** wait until the very end of the deadline and request for extention. There will be no extention and your score will be deducted.
-
-## Installing Dependencies
-You can re-use the conda environment from the previous assignments.
-
-## Compile and Run Your Code
-To run the code, use the following command to render a scene and display it on the screen (e.g., `./scenes_data/test_single_sphere.scene`):
-```
-python main.py --scene_path ./scenes_data/test_single_sphere.scene
-```
-
-To save the result to a file, provide the `--save_path` argument:
-```
-python main.py --scene_path ./scenes_data/test_single_sphere.scene --save_path ./results/test_single_sphere.png
-```
-
-You will have to render all the scenes given in `./scenes_data`. You can run the above command for each scene file or use the provided `run_all.py` script to automate rendering. Results will be saved in `./results`.
-
+## Ablations across different Antialiasing samples (Zoom-In for better details):
+Line 44 in `fragment_shader.frag`: const int ANTIALIASING_SAMPLES
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./ablations/without_antialiasing.png" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-20%, -50%); color: red; font-size: 15px; font-weight: bold;">
+    Without Antialiasing
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./ablations/with_4_antialiasing_samples.png" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    With 4 Antialiasing Samples
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./ablations/with_8_antialiasing_samples.png" "width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    With 8 Antialiasing Samples
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./ablations/with_16_antialiasing_samples.png" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    With 16 Antialiasing Samples
+    </div>
+</div>
+<div align="center" style="position: relative; display: inline-block; width: 250px;">
+    <img src="./ablations/with_32_antialiasing_samples.png" Scene" style="width: 100%;" />
+    <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
+    With 32 Antialiasing Samples
+    </div>
+</div>
 
 ## Tasks
-The ultimate goal is to build a ray tracer. To do so, your task can be divided into four steps:
-- **Step 1:** Send out rays from the camera location. In this assignment, ray generation is handled in the fragment shader (`fragment_shader.frag`). The camera position is passed as a uniform (`camera_pos`), assumed to be at (0,0,0). Rays are generated per fragment using normalized device coordinates (NDC) adjusted by the aspect ratio and field of view (FOV). The final images should be 640x480, but you can adjust `--window_width` and `--window_height` for debugging with smaller resolutions (fewer fragments = faster rendering). The FOV is fixed at 80 degrees, and you should set the `fov_tan` uniform in `app.py`.
+- **Ray Generation**: Implemented ray generation in the fragment shader. Rays are cast from the camera location (0,0,0) through the pixel corresponding to each fragment in the image, with the normalized device coordinates (NDC) adjusted by aspect ratio and field of view (FOV).
+  
+- **Intersection Calculations**:
+  - **Ray-Sphere Intersection**: Implemented the mathematical solution for ray-sphere intersection, handling intersection checks between rays and spheres using the quadratic formula.
+  - **Ray-Triangle Intersection**: Implemented ray-triangle intersection using barycentric coordinates for more accurate intersection checks between rays and triangles.
 
-- **Step 2:** Write the intersection code in the fragment shader. You’ll implement ray-sphere and ray-triangle intersection functions (`sphere_intersect` and `triangle_intersect`). The mathematical solutions for the intersection code are provided in the lecture notes or in the instructions pdf attached to this repo.
+- **Phong Shading Implementation**:
+  - Applied **Phong illumination** for shadingon both spheres and triangles, incorporating ambient, diffuse, and specular components.
+  - Included shadow rays for detecting if a point lies in shadow relative to each light source. If the point is in shadow, the color contribution from that light is black, otherwise, Phong shading is applied.
 
-- **Step 3:** Implement the Phong illumination equations in the fragment shader. At each intersection point, you need to first determine if it is in shadow, separately for each light source. You do this by launching a shadow ray to each of the lights. If the point is in shadow, its color with respect to that light should be (0,0,0), that is, black. If the point is not in shadow, use Phong shading to determine the color of the point with respect to that light:
+- **Additional Features**:
+  - **Recursive Reflection**: Implemented recursive reflection to simulate mirror-like surfaces, allowing for reflections in both spheres and triangles.
+  - **Anti-Aliasing**: Added anti-aliasing using multiple samples per pixel for smoother results, especially around object edges.
+  - **Soft Shadows**: Introduced soft shadows by sampling aaround the light source to simulate penumbra effects.
 
-    $I = C_a + C_l * \left(k_d (L \cdot N) + k_s (R \cdot V)^{sh}\right)$
+## Scene Rendering
+The ray tracer was tested with various scene files, and the results were rendered with the following commands:
 
-    where:
-    - C_a is the ambient light;
-    - C_l is the color of the light source;
-    - k_d and k_s are the the diffuse and specular reflection constants, respectively;
-    - L is the direction vector from the point on the surface toward the light source;
-    - N is the normal vector on the surface;
-    - V is the direction vector from the surface to the camera;
-    - R is the reflected vector of L at the point on the surface.
+```bash
+python main.py --scene_path ./scenes_data/test_single_sphere.scene
+python main.py --scene_path ./scenes_data/test_double_sphere.scene --save_path ./outputs/test_double_sphere.png
+python main.py --scene_path ./scenes_data/test_triangle.scene --save_path ./outputs/test_triangle.png
+```
 
-    The final color of the point is the sum of the contributions from all lights, plus the global ambient color. You only add the global ambient color once, regardless of how many lights the scene has, and regardless of how many lights are visible from the point. Note that it could happen that a point is in shadow with respect to all lights. In this case, the final color will be the global ambient color. Or a point could be in shadow with respect to some lights, but not others. Or, all lights may be visible from a point. If the final color is greater than 1.0, you should of course clamp it to 1.0.
+## Code Breakdown
+The solution was divided into the following major components:
 
-     For triangles, interpolate normals, diffuse, specular, and shininess using barycentric coordinates (implemented in `barycentric`). For spheres, compute the normal from the intersection point and sphere center.
+1. **Shader Programs**:
+   - **Vertex Shader**: Handles the passing of geometry data to the fragment shader.
+   - **Fragment Shader**: Contains the ray tracing logic, including ray generation, intersection checks, and Phong shading. This is where the ray-sphere and ray-triangle intersections were implemented.
+   
+2. **Utility Classes**:
+   - `Vec3`: A utility class for 3D vector operations such as dot product, cross product, and normalization.
+   - `Scene`: Loads scene data including spheres, triangles, lights, and ambient light.
 
-- **Step 4:** Create still images showing off your ray tracer. The starter code handles rendering and saving automatically. Run `python main.py` with the appropriate arguments for each scene in `./scenes_data`, or use an automated script. Submit the rendered images along with your code in the end.
+3. **Application Logic**:
+   - **App Setup**: Responsible for setting the camera, window dimensions, and FOV, and passing scene data to the shaders.
+   - **Scene Data**: All scene files (e.g., `test_single_sphere.scene`, `test_triangle.scene`) are structured to define the 3D objects and lighting.
 
-This is the list of requirements for this assignment:
-- Triangle intersection (20 points)
-- Sphere intersection (20 points)
-- Triangle Phong shading (15 points)
-- Sphere Phong shading (15 points)
-- Shadows rays (15 points)
-- Still images (15 points)
+4. **Ray Tracing Logic**:
+   - Intersection functions (`sphere_intersect`, `triangle_intersect`) determine whether a ray hits a sphere or triangle, using geometric computations.
+   - Phong shading is applied by computing lighting based on the angle of incidence and reflection.
 
-After you implemented all the required functionalities, your output should look similar to the following image (without the watermarks of course):
+## Improvements & Extra Credit
 
-![result](example_results/test_sphere_and_triangle.png)
+1. **Recursive Reflection**
+    - Implemented using an iterative approach to avoid GLSL recursion issues.
+    - Maximum of 3 reflection bounces.
+    - Rays accumulate color contributions at each bounce.
+    - Properly handles reflection attenuation based on surface reflectivity.
 
-You can also implmenent some extra features to get credit scores. Below are some suggestions (but not limited to):
-- Recursive reflection (10 points)
-- Good antialiasing (10 points)
-- Soft shadows (10 points)
-- Animation (5 points)
-- Animation + Motion blur (15 points)
+2. **Antialiasing**
+    - N×N supersampling grid (N^2 samples per pixel).
+    - Subpixel jittering for higher quality edge smoothing.
+    - Proper averaging of all samples for the final color.
 
-Please note that the amount of extra credit awarded will not exceed 20% of the assignment's total value.
+3. **Soft Shadows**
+    - 16 random samples per light source for soft shadow calculation.
+    - Properly distributes samples over the light surface using a disk distribution.
+    - Creates an orthonormal basis to properly position shadow samples.
+    - Returns a floating-point shadow factor for subtle shadow gradients.
 
-
-## Starter Code Instructions
-Similar to previous assignments, we also provide a starter code which already implemented a few basic elements:
-- `utils.py`: Contains the `Vec3` class for 3D vectors (with operators like dot, cross, normalize) and utility functions for shader compilation. No implementation required here.
-- `scene.py`: Represents the scene, loading primitives (spheres, triangles), lights, and ambient light from a file. No implementation required.
-- `app.py`: Sets up the OpenGL context, loads the scene, and passes data to the shader via uniforms. You need to implement:
-    - Setting the fov_tan uniform using an 80-degree FOV.
-- `fragment_shader.frag`: The core ray tracing logic resides here. You need to implement:
-    - `sphere_intersect(vec3 ro, vec3 rd, vec3 center, float radius)`: Calculate ray-sphere intersection.
-    - `triangle_intersect(vec3 ro, vec3 rd, Triangle tri)`: Calculate ray-triangle intersection.
-    - `barycentric(vec3 p, vec3 a, vec3 b, vec3 c)`: Compute barycentric coordinates for triangle interpolation.
-    - `phong_shading(vec3 pos, vec3 normal, vec3 diffuse, vec3 specular, float shininess, vec3 view_dir, Light light)`: Compute Phong illumination for a point.
-
-
-## Free Tips
-- Check carefully the provided starter code. We already implemented almost every basic stuff so you should not waste your time reinventing the wheel.
-- Check the hints given in the code, could be very useful.
-- Debug with smaller window sizes (using `--window_width` and  `--window_height`) to speed up rendering.
-- Test incrementally with provided scenes:
-    - `test_single_sphere.scene`: Debug sphere intersection and Phong shading.
-    - `test_double_sphere.scene`: Verify multiple object handling.
-    - `test_triangle.scene`: Debug triangle intersection and shading.
-
-- For triangle intersections, compute the plane normal using a cross product of two edges in `triangle_intersect`. Use the vertex normals (interpolated via `barycentric`) for Phong shading to achieve smooth highlights.
-- Clamp negative dot products (e.g., $L \cdot N$ or $R \cdot V$) to 0 in `phong_shading`, as they indicate no contribution (light below horizon or view far from reflection).
-- Handle floating-point precision with `EPS` (e.g., `t > EPS` instead of `t > 0`) to avoid artifacts.
+## Conclusion
+The assignment was successfully completed with all core tasks (ray generation, intersections, Phong shading, and shadowing) implemented correctly. Extra features like recursive reflections, anti-aliasing, and soft shadows were added to enhance the visual quality of the rendered scenes. This project allowed me to gain hands-on experience with ray tracing techniques, GLSL shader programming, and the complexities involved in simulating realistic lighting effects.
