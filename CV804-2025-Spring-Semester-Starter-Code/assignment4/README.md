@@ -4,27 +4,27 @@
 In this assignment, I implemented a ray tracing renderer that handles opaque surfaces with lighting and shadows using GLSL shaders. The goal was to build a ray tracer that could generate rays, compute intersections, and apply Phong illumination along with shadowing. The final solution is a fully functional ray tracing system that renders scenes with spheres and triangles, applying appropriate lighting and shading effects.
 
 ## Results - Without Additional Credit Features
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./outputs/test_single_sphere.png" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-20%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./outputs/test_double_sphere.png" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./outputs/spheres.png" "width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./outputs/test_triangle.png" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./outputs/test_sphere_and_triangle.png" Scene" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     </div>
@@ -34,27 +34,27 @@ In this assignment, I implemented a ray tracing renderer that handles opaque sur
 - Recursive Reflection
 - Anti-Aliasing
 - Soft Shadows
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./outputs_extra_creds/test_single_sphere.png" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-20%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./outputs_extra_creds/test_double_sphere.png" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./outputs_extra_creds/spheres.png" "width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./outputs_extra_creds/test_triangle.png" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./outputs_extra_creds/test_sphere_and_triangle.png" Scene" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     </div>
@@ -62,31 +62,31 @@ In this assignment, I implemented a ray tracing renderer that handles opaque sur
 
 ## Ablations across different Antialiasing samples (Zoom-In for better details):
 Line 44 in `fragment_shader.frag`: const int ANTIALIASING_SAMPLES
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./ablations/without_antialiasing.png" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-20%, -50%); color: red; font-size: 15px; font-weight: bold;">
     Without Antialiasing
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./ablations/with_4_antialiasing_samples.png" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     With 4 Antialiasing Samples
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./ablations/with_8_antialiasing_samples.png" "width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     With 8 Antialiasing Samples
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./ablations/with_16_antialiasing_samples.png" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     With 16 Antialiasing Samples
     </div>
 </div>
-<div align="center" style="position: relative; display: inline-block; width: 250px;">
+<div align="center" style="position: relative; display: inline-block;">
     <img src="./ablations/with_32_antialiasing_samples.png" Scene" style="width: 100%;" />
     <div style="position: absolute; top: 90%; left: 8%; transform: translate(-18%, -50%); color: yellow; font-size: 15px; font-weight: bold;">
     With 32 Antialiasing Samples
