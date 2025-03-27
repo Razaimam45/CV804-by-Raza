@@ -1,2 +1,5 @@
-[Assignment #1](./CV804-2025-Spring-Semester-Starter-Code/assignment1)
-"# CV804-by-Raza" 
+[Assignment #1](./Assignment_1/assignment1)
+[Assignment #2](./Assignment_2/assignment2)
+[Assignment #3](./Assignment_3/assignment3)
+[Assignment #4](./Assignment_4/assignment4)
+[Assignment #5](./Assignment_5/assignment5)
