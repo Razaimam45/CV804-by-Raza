@@ -1,11 +1,11 @@
 # Rigid Surface Registration
 
-![Examples](./assets_results\gifs\bunny_p2p_gif.gif)
-![Examples](./assets_results\gifs\bunny_p2surface_gif.gif)
-![Examples](./assets_results\gifs\bee_p2p_gif.gif)
-![Examples](./assets_results\gifs\goblet_p2surface_gif.gif)
-![Examples](./assets_results\gifs\dragon_p2surface_gif.gif)
-![Examples](./assets_results\gifs\asu_p2surface_gif.gif)
+![Examples](./assets_results/gifs/bunny_p2p_gif.gif)
+![Examples](./assets_results/gifs/bunny_p2surface_gif.gif)
+![Examples](./assets_results/gifs/bee_p2p_gif.gif)
+![Examples](./assets_results/gifs/goblet_p2surface_gif.gif)
+![Examples](./assets_results/gifs/dragon_p2surface_gif.gif)
+![Examples](./assets_results/gifs/asu_p2surface_gif.gif)
 
 ## Overview
 This project implements an **interactive rigid surface registration application** for aligning multiple 3D meshes. It supports **point-to-point** and **point-to-plane** distance minimization techniques.
